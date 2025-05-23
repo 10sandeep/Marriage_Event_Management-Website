@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage';
 import InvitationsPage from './pages/InvitationsPage';
 import EventsPage from './pages/EventsPage';
 import RsvpPage from './pages/RsvpPage';
-import RegistryPage from './pages/RegistryPage';
+// import RegistryPage from './pages/RegistryPage';
 import GalleryPage from './pages/GalleryPage';
 import AuthPage from './pages/AuthPage';
 
@@ -39,8 +39,8 @@ function App() {
         return <EventsPage />;
       case 'rsvp':
         return <RsvpPage />;
-      case 'registry':
-        return <RegistryPage />;
+      // case 'registry':
+      //   return <RegistryPage />;
       case 'gallery':
         return <GalleryPage />;
       case 'login':

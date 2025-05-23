@@ -1,143 +1,220 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Heart } from 'lucide-react';
-import { NavItem } from '../types';
+import { Menu, X, Heart, Sparkles, Calendar, Camera } from 'lucide-react';
 
-const navigationItems: NavItem[] = [
-  { title: 'Home', href: '#home' },
-  { title: 'Invitations', href: '#invitations' },
-  { title: 'Events', href: '#events' },
-  { title: 'RSVP', href: '#rsvp' },
-  { title: 'Registry', href: '#registry' },
-  { title: 'Gallery', href: '#gallery' },
+const navigationItems = [
+  { title: 'Home', href: '#home', icon: Heart },
+  { title: 'Invitations', href: '#invitations', icon: Sparkles },
+  { title: 'Events', href: '#events', icon: Calendar },
+  { title: 'RSVP', href: '#rsvp', icon: Heart },
+  { title: 'Gallery', href: '#gallery', icon: Camera },
 ];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeHash, setActiveHash] = useState(window.location.hash || '#home');
+  const [activeHash, setActiveHash] = useState('#home');
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setActiveHash(window.location.hash || '#home');
-    };
+    const handleScroll = () => setScrollY(window.scrollY);
+    const handleHashChange = () => setActiveHash(window.location.hash || '#home');
 
+    window.addEventListener('scroll', handleScroll);
     window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (href) => {
     setIsMenuOpen(false);
+    setActiveHash(href);
     window.location.hash = href.replace('#', '');
   };
 
   return (
-    <nav className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-pink-100 dark:border-gray-700 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <a 
-              href="#home" 
-              className="flex items-center space-x-2 group"
-              onClick={() => handleNavClick('#home')}
-            >
-              <Heart className="h-8 w-8 text-pink-500 fill-pink-500 transition-transform duration-300 group-hover:scale-110" />
-              <span className="text-xl font-serif font-medium text-gray-900 dark:text-white">
-                Forever<span className="text-pink-500">&</span>After
-              </span>
-            </a>
-          </div>
+    <>
+      {/* Animated background gradient */}
+      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-rose-900/20 pointer-events-none" />
+      
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrollY > 50 ? 'backdrop-blur-xl bg-black/10' : 'backdrop-blur-md bg-white/5'
+      }`}>
+        {/* Glassmorphism container */}
+        <div className="relative">
+          {/* Animated border */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-rose-500/20 blur-sm" />
+          <div className="absolute inset-[1px] rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20" />
           
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
-              {navigationItems.map((item) => (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  onClick={() => handleNavClick(item.href)}
-                  className={`relative px-2 py-1 text-sm font-medium transition-colors duration-200 ${
-                    activeHash === item.href
-                      ? 'text-pink-500 dark:text-pink-400'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400'
-                  }`}
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="flex items-center justify-between h-20">
+              {/* Logo */}
+              <div className="flex items-center group cursor-pointer" onClick={() => handleNavClick('#home')}>
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20">
+                    <Heart className="h-6 w-6 text-white fill-pink-400 transition-transform duration-300 group-hover:scale-110" />
+                  </div>
+                </div>
+                <div className="ml-4">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-white via-pink-200 to-purple-200 bg-clip-text text-transparent">
+                    Eternal
+                  </span>
+                  <span className="text-2xl font-light bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent ml-1">
+                    Moments
+                  </span>
+                </div>
+              </div>
+              
+              {/* Desktop Navigation */}
+              <div className="hidden lg:flex items-center space-x-1">
+                {navigationItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = activeHash === item.href;
+                  
+                  return (
+                    <div key={item.title} className="relative group">
+                      <button
+                        onClick={() => handleNavClick(item.href)}
+                        className={`relative flex items-center space-x-2 px-6 py-3 rounded-xl transition-all duration-300 ${
+                          isActive
+                            ? 'bg-white/20 backdrop-blur-sm border border-white/30 text-white shadow-lg'
+                            : 'text-white/80 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm'
+                        }`}
+                      >
+                        <Icon className={`h-4 w-4 transition-all duration-300 ${
+                          isActive ? 'text-pink-400' : 'text-white/60 group-hover:text-pink-400'
+                        }`} />
+                        <span className="font-medium text-sm">{item.title}</span>
+                        
+                        {/* Active indicator */}
+                        {isActive && (
+                          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500/20 to-purple-500/20 blur-sm" />
+                        )}
+                      </button>
+                    </div>
+                  );
+                })}
+                
+                {/* CTA Button */}
+                <div className="ml-8 relative group">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
+                  <button
+                    onClick={() => handleNavClick('#login')}
+                    className="relative bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold text-sm shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-white/20"
+                  >
+                    <span className="flex items-center space-x-2">
+                      <Sparkles className="h-4 w-4" />
+                      <span>Get Started</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              
+              {/* Mobile menu button */}
+              <div className="lg:hidden">
+                <button
+                  onClick={toggleMenu}
+                  className="relative p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
                 >
-                  {item.title}
-                  {activeHash === item.href && (
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-500 dark:bg-pink-400 rounded-full transform origin-left transition-transform duration-200" />
-                  )}
-                </a>
-              ))}
-              <a
-                href="#login"
-                onClick={() => handleNavClick('#login')}
-                className="text-white bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
-              >
-                Sign In
-              </a>
+                  {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </button>
+              </div>
             </div>
           </div>
-          
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 p-2 rounded-md transition-colors duration-200"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden fixed inset-0 z-50 transform ${
+      {/* Mobile Menu */}
+      <div className={`lg:hidden fixed inset-0 z-40 transform transition-all duration-500 ease-out ${
+        isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+      }`}>
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+          onClick={toggleMenu}
+        />
+        
+        {/* Menu Panel */}
+        <div className={`absolute right-0 top-0 h-full w-80 transform transition-transform duration-500 ease-out ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        } transition-transform duration-300 ease-in-out`}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50" onClick={toggleMenu} />
-        <div className="absolute right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl">
-          <div className="flex flex-col h-full">
-            <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
-              <span className="font-serif text-lg text-gray-900 dark:text-white">Menu</span>
-              <button
-                onClick={toggleMenu}
-                className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400"
-              >
-                <X className="h-6 w-6" />
-              </button>
-            </div>
-            <div className="flex-1 overflow-y-auto py-4">
-              {navigationItems.map((item) => (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  onClick={() => handleNavClick(item.href)}
-                  className={`block px-6 py-3 text-base font-medium transition-colors duration-200 ${
-                    activeHash === item.href
-                      ? 'text-pink-500 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/20'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-pink-500 dark:hover:text-pink-400 hover:bg-gray-50 dark:hover:bg-gray-700'
-                  }`}
+        }`}>
+          <div className="relative h-full">
+            {/* Animated background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-pink-900/40 to-rose-900/40" />
+            <div className="absolute inset-0 backdrop-blur-xl bg-black/20" />
+            
+            <div className="relative h-full flex flex-col">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-white/10">
+                <span className="text-xl font-bold bg-gradient-to-r from-white to-pink-200 bg-clip-text text-transparent">
+                  Menu
+                </span>
+                <button
+                  onClick={toggleMenu}
+                  className="p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors duration-200"
                 >
-                  {item.title}
-                </a>
-              ))}
-            </div>
-            <div className="p-4 border-t dark:border-gray-700">
-              <a
-                href="#login"
-                onClick={() => handleNavClick('#login')}
-                className="block w-full text-center text-white bg-gradient-to-r from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700 px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg"
-              >
-                Sign In
-              </a>
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              
+              {/* Navigation Items */}
+              <div className="flex-1 overflow-y-auto py-6">
+                {navigationItems.map((item, index) => {
+                  const Icon = item.icon;
+                  const isActive = activeHash === item.href;
+                  
+                  return (
+                    <div 
+                      key={item.title}
+                      className="px-6 mb-2"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
+                      <button
+                        onClick={() => handleNavClick(item.href)}
+                        className={`w-full flex items-center space-x-4 p-4 rounded-xl transition-all duration-300 group ${
+                          isActive
+                            ? 'bg-white/20 backdrop-blur-sm border border-white/30 text-white'
+                            : 'text-white/80 hover:text-white hover:bg-white/10'
+                        }`}
+                      >
+                        <div className={`p-2 rounded-lg transition-all duration-300 ${
+                          isActive 
+                            ? 'bg-pink-500/20 text-pink-400' 
+                            : 'bg-white/10 text-white/60 group-hover:bg-pink-500/20 group-hover:text-pink-400'
+                        }`}>
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <span className="font-medium">{item.title}</span>
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+              
+              {/* CTA Button */}
+              <div className="p-6 border-t border-white/10">
+                <div className="relative group">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 blur-md opacity-75" />
+                  <button
+                    onClick={() => handleNavClick('#login')}
+                    className="relative w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 rounded-xl font-semibold shadow-xl border border-white/20 transition-all duration-300 transform hover:scale-105"
+                  >
+                    <span className="flex items-center justify-center space-x-2">
+                      <Sparkles className="h-5 w-5" />
+                      <span>Get Started</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 
