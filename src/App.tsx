@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import InvitationsPage from './pages/InvitationsPage';
-import EventsPage from './pages/EventsPage';
-import RsvpPage from './pages/RsvpPage';
+// import EventsPage from './pages/EventsPage';
+// import RsvpPage from './pages/RsvpPage';
 // import RegistryPage from './pages/RegistryPage';
 import GalleryPage from './pages/GalleryPage';
 import AuthPage from './pages/AuthPage';
@@ -39,8 +39,8 @@ function App() {
         return <AboutUsPage/>;
       case 'invitations':
         return <InvitationsPage />;
-      case 'events':
-        return <EventsPage />;
+      // case 'events':
+      //   return <EventsPage />;
      
       case 'service':
         return <ServicesPage/>;

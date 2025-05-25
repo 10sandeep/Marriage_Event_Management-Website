@@ -5,48 +5,70 @@ import SHOWS from '../assets/Shows.jpg'
 import CATERING from '../assets/Catering.jpg'
 import BUSINESS from '../assets/Business Gathering.jpg'
 import FLORAL from '../assets/Floral Style.jpg'
+import INVITATION1 from '../assets/Invitation 1.png'
+import INVITATION2 from '../assets/Invitation 2.png'
+import INVITATION3 from '../assets/Invitation 3.png'
+import INVITATION4 from '../assets/Invitation 4.png'
+import INVITATION5 from '../assets/Invitation 5.png'
+import INVITATION6 from '../assets/Invitation 6.png'
+import INVITATION7 from '../assets/Invitation 7.png'
+import INVITATION8 from '../assets/Invitation 8.png'
 // Mock invitation templates
 export const invitationTemplates: InvitationTemplate[] = [
   {
     id: '1',
     name: 'Elegant Roses',
     theme: 'Traditional',
-    imageUrl: 'https://images.pexels.com/photos/169190/pexels-photo-169190.jpeg',
+    imageUrl: INVITATION1,
     description: 'A classic design with elegant rose motifs, perfect for traditional ceremonies.'
   },
   {
     id: '2',
     name: 'Modern Minimalist',
     theme: 'Minimal',
-    imageUrl: 'https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg',
+    imageUrl: INVITATION2,
     description: 'Clean lines and minimalist typography for the modern couple.'
   },
   {
     id: '3',
     name: 'Bohemian Garden',
     theme: 'Floral',
-    imageUrl: 'https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg',
+    imageUrl: INVITATION3,
     description: 'Lush floral patterns with a bohemian touch for a garden-inspired wedding.'
   },
   {
     id: '4',
     name: 'Royal Gold',
     theme: 'Royal',
-    imageUrl: 'https://images.pexels.com/photos/265906/pexels-photo-265906.jpeg',
+    imageUrl: INVITATION4,
     description: 'Luxurious gold detailing for couples seeking a regal celebration.'
   },
   {
     id: '5',
     name: 'Rustic Charm',
     theme: 'Traditional',
-    imageUrl: 'https://images.pexels.com/photos/1045541/pexels-photo-1045541.jpeg',
+    imageUrl: INVITATION5,
     description: 'Warm tones and rustic elements for a cozy, countryside wedding.'
   },
   {
     id: '6',
     name: 'Watercolor Dreams',
     theme: 'Floral',
-    imageUrl: 'https://images.pexels.com/photos/1303078/pexels-photo-1303078.jpeg',
+    imageUrl:INVITATION6,
+    description: 'Soft watercolor florals for a romantic and dreamy atmosphere.'
+  },
+    {
+    id: '7',
+    name: 'Watercolor Dreams',
+    theme: 'Floral',
+    imageUrl:INVITATION7,
+    description: 'Soft watercolor florals for a romantic and dreamy atmosphere.'
+  },
+    {
+    id: '8',
+    name: 'Watercolor Dreams',
+    theme: 'Floral',
+    imageUrl:INVITATION8,
     description: 'Soft watercolor florals for a romantic and dreamy atmosphere.'
   }
 ];
