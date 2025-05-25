@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Heart, Sparkles, Calendar, Camera } from 'lucide-react';
+import { Menu, X, Heart, Sparkles, Calendar, Camera, LucideWrench } from 'lucide-react';
 
 const navigationItems = [
   { title: 'Home', href: '#home', icon: Heart },
+  { title: 'About Us', href: '#aboutus', icon: Heart },
   { title: 'Invitations', href: '#invitations', icon: Sparkles },
   { title: 'Events', href: '#events', icon: Calendar },
-  { title: 'RSVP', href: '#rsvp', icon: Heart },
+  { title: 'Services', href: '#service', icon: LucideWrench },
   { title: 'Gallery', href: '#gallery', icon: Camera },
 ];
 

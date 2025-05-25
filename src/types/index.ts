@@ -49,3 +49,10 @@ export interface GalleryImage {
   uploadedBy: string;
   uploadedAt: Date;
 }
+
+export interface Services {
+  id : string;
+   heading: string;
+  url: string;
+  paragraph: string;
+}

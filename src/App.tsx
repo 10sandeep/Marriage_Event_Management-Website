@@ -7,6 +7,8 @@ import RsvpPage from './pages/RsvpPage';
 // import RegistryPage from './pages/RegistryPage';
 import GalleryPage from './pages/GalleryPage';
 import AuthPage from './pages/AuthPage';
+import ServicesPage from './pages/ServicesPage';
+import AboutUsPage from './pages/AboutUs';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -33,14 +35,15 @@ function App() {
   
   const renderPage = () => {
     switch (currentPage) {
+       case 'aboutus':
+        return <AboutUsPage/>;
       case 'invitations':
         return <InvitationsPage />;
       case 'events':
         return <EventsPage />;
-      case 'rsvp':
-        return <RsvpPage />;
-      // case 'registry':
-      //   return <RegistryPage />;
+     
+      case 'service':
+        return <ServicesPage/>;
       case 'gallery':
         return <GalleryPage />;
       case 'login':

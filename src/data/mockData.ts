@@ -1,5 +1,10 @@
-import { InvitationTemplate, Event, Guest, GiftItem, GalleryImage } from '../types';
-
+import { InvitationTemplate, Event, Guest, GiftItem, GalleryImage,Services } from '../types';
+import MEDIA from '../assets/Media.jpg'
+import LOCATION from '../assets/Location.jpg'
+import SHOWS from '../assets/Shows.jpg'
+import CATERING from '../assets/Catering.jpg'
+import BUSINESS from '../assets/Business Gathering.jpg'
+import FLORAL from '../assets/Floral Style.jpg'
 // Mock invitation templates
 export const invitationTemplates: InvitationTemplate[] = [
   {
@@ -230,5 +235,50 @@ export const galleryImages: GalleryImage[] = [
     caption: 'Reception dinner',
     uploadedBy: 'Uncle Bob',
     uploadedAt: new Date(2023, 11, 30)
+  }
+];
+
+export const services: Services[] =[
+  {
+    id: '1',
+    heading: 'Business Gatherings',
+    url:BUSINESS,
+    paragraph:
+      'Business gatherings are key to fostering collaboration, sharing insights, and celebrating achievements. These events help strengthen professional bonds, inspire new ideas, and contribute to the success of a company’s vision.'
+  },
+  {
+    id: '2',
+    heading: 'Performers & Shows',
+    url: SHOWS,
+    paragraph:
+      'Performers and artistic shows provide entertainment that connects emotionally with audiences. Their creativity brings energy and imagination to life, leaving lasting impressions and cultural impact.'
+  },
+  {
+    id: '3',
+    heading: 'Location & Venue Planning',
+    url: LOCATION,
+    paragraph:
+      'Selecting the ideal location or venue is a cornerstone of effective event planning. It sets the scene, influences the mood, and ensures the overall success of events ranging from formal functions to casual gatherings.'
+  },
+  {
+    id: '4',
+    heading: 'Food Service & Culinary Design',
+    url: CATERING,
+    paragraph:
+      'Great food service paired with a well-thought-out menu enhances the guest experience. Whether it’s a banquet or buffet, the right culinary choices elevate the occasion and cater to diverse tastes.'
+  },
+  {
+    id: '5',
+    heading: 'Floral Styling & Ambience',
+    url: FLORAL,
+    paragraph:
+      'Floral styling adds beauty and sophistication to events. By blending color and fragrance, floral décor transforms spaces into inviting and elegant settings, perfect for celebrations or formal occasions.'
+  },
+  {
+    id: '6',
+    heading: 'Event Memories & Media',
+    url: MEDIA,
+    paragraph:
+      'Capturing moments through photography and videography preserves memories for years to come. These creative services tell your event’s story and allow people to revisit the joy and significance long after it ends.'
   }
 ];
