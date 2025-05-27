@@ -9,6 +9,7 @@ import GalleryPage from './pages/GalleryPage';
 import AuthPage from './pages/AuthPage';
 import ServicesPage from './pages/ServicesPage';
 import AboutUsPage from './pages/AboutUs';
+import ContactUsPage from './pages/ContactUs';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -46,6 +47,8 @@ function App() {
         return <ServicesPage/>;
       case 'gallery':
         return <GalleryPage />;
+              case 'contactus':
+        return <ContactUsPage/>;
       case 'login':
         return <AuthPage />;
       case 'home':
