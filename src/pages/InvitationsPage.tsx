@@ -34,92 +34,59 @@ const InvitationsPage = () => {
   });
 
   return (
-    <div className="relative min-h-screen">
-      {/* Animated background */}
-      <div className="fixed inset-0 bg-gradient-to-br from-rose-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-gray-900">
-        {/* Floating geometric shapes */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-rose-300/20 to-purple-300/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-purple-300/20 to-pink-300/20 rounded-full blur-2xl animate-bounce delay-1000"></div>
-        <div className="absolute bottom-40 left-1/3 w-40 h-40 bg-gradient-to-r from-pink-300/20 to-rose-300/20 rounded-full blur-3xl animate-pulse delay-500"></div>
-      </div>
-      
-      <div className="relative z-10 py-20">
+    <div className="min-h-screen bg-white">      
+      <div className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Hero Section with futuristic styling */}
-          <div className="text-center mb-16 relative">
-            {/* Floating decorative elements */}
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <div className="flex space-x-8 opacity-60">
-                <Heart className="w-6 h-6 text-rose-400 animate-pulse" />
-                <Sparkles className="w-5 h-5 text-purple-400 animate-bounce delay-300" />
-                <Star className="w-4 h-4 text-pink-400 animate-pulse delay-700" />
-              </div>
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight mt-10">
-              <span className="bg-gradient-to-r from-rose-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-pulse">
-                Digital Wedding
-              </span>
-              <br />
-              <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-transparent">
-                Invitations
-              </span>
+          {/* Hero Section */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-serif font-bold text-gray-900 sm:text-5xl mb-4 mt-12">
+              Digital Wedding
+              <span className="text-rose-500"> Invitations</span>
             </h1>
-            
-            <p className="mt-6 text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
-              Choose from our <span className="font-semibold bg-gradient-to-r from-rose-500 to-purple-500 bg-clip-text text-transparent">beautiful collection</span> of digital invitation designs to share your special day with loved ones.
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Choose from our beautiful collection of digital invitation designs to share your special day with loved ones.
             </p>
           </div>
           
-          {/* Search and Filter Section with glassmorphism */}
-          <div className="mb-12 relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-rose-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-            
-            <div className="relative bg-white/20 dark:bg-gray-800/30 backdrop-blur-xl border border-white/30 dark:border-gray-700/30 rounded-2xl shadow-2xl p-8">
+          {/* Search and Filter Section */}
+          <div className="mb-12">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl shadow-sm p-6 transition-all duration-300 hover:shadow-md hover:border-gray-300">
               <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0 lg:space-x-8">
                 
                 {/* Search Bar */}
-                <div className="relative w-full max-w-md group/search">
-                  <div className="absolute inset-0 bg-gradient-to-r from-rose-500/20 to-purple-500/20 rounded-xl blur opacity-0 group-hover/search:opacity-100 transition-all duration-300"></div>
-                  <div className="relative">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-hover/search:text-rose-500 h-5 w-5 transition-colors duration-300" />
-                    <input
-                      type="text"
-                      placeholder="Search magical invitations..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-12 pr-4 py-4 w-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-white/20 dark:border-gray-600/20 rounded-xl focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500/50 dark:text-white placeholder-gray-500 transition-all duration-300 focus:bg-white/70 dark:focus:bg-gray-800/70"
-                    />
-                  </div>
+                <div className="relative w-full max-w-md group">
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5 transition-colors duration-200 group-hover:text-rose-500" />
+                  <input
+                    type="text"
+                    placeholder="Search invitations..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-12 pr-4 py-3 w-full bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500 text-gray-900 placeholder-gray-500 transition-all duration-200 hover:border-gray-400"
+                  />
                 </div>
                 
                 {/* Theme Filters */}
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center space-x-3">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm">
-                      <Filter className="text-purple-600 dark:text-purple-400 h-5 w-5" />
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-200 transition-colors duration-200 hover:bg-gray-300">
+                      <Filter className="text-gray-600 h-5 w-5" />
                     </div>
-                    <span className="text-gray-700 dark:text-gray-200 font-medium">Filter by theme:</span>
+                    <span className="text-gray-700 font-medium">Filter:</span>
                   </div>
                   
-                  <div className="flex flex-wrap gap-3">
-                    {themes.map((theme, index) => (
+                  <div className="flex flex-wrap gap-2">
+                    {themes.map((theme) => (
                       <button
                         key={theme}
                         onClick={() => handleThemeFilter(theme)}
-                        className={`group/filter relative overflow-hidden px-5 py-2.5 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 ${
+                        className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105 ${
                           (theme === 'All' && selectedTheme === '') || theme === selectedTheme
-                            ? 'bg-gradient-to-r from-rose-500 to-purple-600 text-white shadow-lg shadow-rose-500/25'
-                            : 'bg-white/30 dark:bg-gray-700/30 backdrop-blur-sm text-gray-700 dark:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-600/50 border border-white/20 dark:border-gray-600/20'
+                            ? 'bg-gray-900 text-white shadow-md hover:bg-gray-800'
+                            : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-gray-400 hover:shadow-sm'
                         }`}
                       >
-                        <span className="relative z-10">{theme}</span>
-                        
-                        {/* Shimmer effect for active button */}
-                        {((theme === 'All' && selectedTheme === '') || theme === selectedTheme) && (
-                          <div className="absolute inset-0 -translate-x-full group-hover/filter:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"></div>
-                        )}
+                        {theme}
                       </button>
                     ))}
                   </div>
@@ -130,12 +97,12 @@ const InvitationsPage = () => {
           
           {/* Results Section */}
           {filteredTemplates.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredTemplates.map((template, index) => (
                 <div
                   key={template.id}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="opacity-0 animate-fade-in"
+                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
                 >
                   <InvitationCard
                     template={template}
@@ -145,20 +112,16 @@ const InvitationsPage = () => {
               ))}
             </div>
           ) : (
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-400/20 to-gray-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-              
-              <div className="relative text-center py-16 bg-white/20 dark:bg-gray-800/30 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 rounded-2xl shadow-xl">
-                <div className="mb-4">
-                  <Search className="w-16 h-16 text-gray-400 mx-auto opacity-50" />
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-600 dark:text-gray-300 mb-2">
-                  No matching invitations found
-                </h3>
-                <p className="text-gray-500 dark:text-gray-400 text-lg">
-                  Try adjusting your search terms or filters to discover more beautiful designs.
-                </p>
+            <div className="text-center py-16 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-300 hover:bg-gray-100">
+              <div className="mb-4">
+                <Search className="w-16 h-16 text-gray-300 mx-auto" />
               </div>
+              <h3 className="text-2xl font-semibold text-gray-600 mb-2">
+                No matching invitations found
+              </h3>
+              <p className="text-gray-500 text-lg">
+                Try adjusting your search terms or filters to discover more beautiful designs.
+              </p>
             </div>
           )}
         </div>
@@ -172,10 +135,10 @@ const InvitationsPage = () => {
       />
       
       <style jsx>{`
-        @keyframes fade-in-up {
+        @keyframes fade-in {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
@@ -183,9 +146,15 @@ const InvitationsPage = () => {
           }
         }
         
-        .animate-fade-in-up {
-          animation: fade-in-up 0.6s ease-out forwards;
-          opacity: 0;
+        .animate-fade-in {
+          animation: fade-in 0.6s ease-out;
+        }
+        
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
       `}</style>
     </div>

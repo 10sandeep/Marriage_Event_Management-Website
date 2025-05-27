@@ -38,40 +38,38 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Animated background gradient */}
-      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-rose-900/20 pointer-events-none" />
-      
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrollY > 50 ? 'backdrop-blur-xl bg-black/10' : 'backdrop-blur-md bg-white/5'
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrollY > 50 
+          ? 'backdrop-blur-xl shadow-lg bg-white/95' 
+          : 'backdrop-blur-md bg-white/90'
       }`}>
-        {/* Glassmorphism container */}
+        {/* Clean container with subtle border */}
         <div className="relative">
-          {/* Animated border */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-rose-500/20 blur-sm" />
-          <div className="absolute inset-[1px] rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-100/50 via-white/50 to-slate-100/50" />
+          <div className="absolute inset-[1px] backdrop-blur-xl bg-white/80 border-b border-slate-200/50" />
           
           <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="flex items-center justify-between h-20">
-              {/* Logo */}
+            <div className="flex items-center justify-between h-24">
+              {/* Professional Logo */}
               <div className="flex items-center group cursor-pointer" onClick={() => handleNavClick('#home')}>
                 <div className="relative">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20">
-                    <Heart className="h-6 w-6 text-white fill-pink-400 transition-transform duration-300 group-hover:scale-110" />
+                  <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-10 transition-all duration-300 bg-gradient-to-r from-slate-600 to-slate-700" />
+                  <div className="relative rounded-full p-3 shadow-sm group-hover:shadow-md transition-all duration-300 bg-slate-50 border border-slate-200">
+                    <Heart className="h-5 w-5 transition-all duration-300 group-hover:scale-105 text-slate-600 fill-slate-200" />
                   </div>
                 </div>
                 <div className="ml-4">
-                  <span className="text-2xl font-bold bg-gradient-to-r from-white via-pink-200 to-purple-200 bg-clip-text text-transparent">
+                  <span className="text-2xl font-semibold tracking-tight text-slate-800">
                     Eternal
                   </span>
-                  <span className="text-2xl font-light bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent ml-1">
+                  <span className="text-2xl font-light ml-1 text-slate-600">
                     Moments
                   </span>
                 </div>
               </div>
               
               {/* Desktop Navigation */}
-              <div className="hidden lg:flex items-center space-x-1">
+              <div className="hidden lg:flex items-center space-x-2">
                 {navigationItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = activeHash === item.href;
@@ -80,32 +78,28 @@ const Navbar = () => {
                     <div key={item.title} className="relative group">
                       <button
                         onClick={() => handleNavClick(item.href)}
-                        className={`relative flex items-center space-x-2 px-6 py-3 rounded-xl transition-all duration-300 ${
+                        className={`relative flex items-center space-x-2 px-5 py-2.5 rounded-lg transition-all duration-300 ${
                           isActive
-                            ? 'bg-white/20 backdrop-blur-sm border border-white/30 text-white shadow-lg'
-                            : 'text-white/80 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm'
+                            ? 'bg-slate-100 text-slate-800 shadow-sm border border-slate-200'
+                            : 'text-slate-600 hover:text-slate-800 hover:bg-slate-50'
                         }`}
                       >
                         <Icon className={`h-4 w-4 transition-all duration-300 ${
-                          isActive ? 'text-pink-400' : 'text-white/60 group-hover:text-pink-400'
+                          isActive 
+                            ? 'text-slate-700'
+                            : 'text-slate-500 group-hover:text-slate-700'
                         }`} />
-                        <span className="font-medium text-sm">{item.title}</span>
-                        
-                        {/* Active indicator */}
-                        {isActive && (
-                          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500/20 to-purple-500/20 blur-sm" />
-                        )}
+                        <span className="font-medium text-sm tracking-wide">{item.title}</span>
                       </button>
                     </div>
                   );
                 })}
                 
-                {/* CTA Button */}
+                {/* Professional CTA Button */}
                 <div className="ml-8 relative group">
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 blur-md opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
                   <button
                     onClick={() => handleNavClick('#login')}
-                    className="relative bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold text-sm shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border border-white/20"
+                    className="relative px-6 py-2.5 rounded-lg font-medium text-sm shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-[1.02] bg-slate-800 hover:bg-slate-900 text-white border border-slate-700"
                   >
                     <span className="flex items-center space-x-2">
                       <Sparkles className="h-4 w-4" />
@@ -119,9 +113,9 @@ const Navbar = () => {
               <div className="lg:hidden">
                 <button
                   onClick={toggleMenu}
-                  className="relative p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+                  className="relative p-2.5 rounded-lg transition-all duration-300 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300"
                 >
-                  {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                  {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </button>
               </div>
             </div>
@@ -130,40 +124,40 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden fixed inset-0 z-40 transform transition-all duration-500 ease-out ${
+      <div className={`lg:hidden fixed inset-0 z-40 transform transition-all duration-300 ease-out ${
         isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
       }`}>
-        {/* Backdrop */}
+        {/* Professional backdrop */}
         <div 
-          className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+          className="absolute inset-0 backdrop-blur-sm bg-slate-900/20"
           onClick={toggleMenu}
         />
         
-        {/* Menu Panel */}
-        <div className={`absolute right-0 top-0 h-full w-80 transform transition-transform duration-500 ease-out ${
+        {/* Clean menu panel */}
+        <div className={`absolute right-0 top-0 h-full w-80 transform transition-transform duration-300 ease-out ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}>
           <div className="relative h-full">
-            {/* Animated background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-pink-900/40 to-rose-900/40" />
-            <div className="absolute inset-0 backdrop-blur-xl bg-black/20" />
+            {/* Clean background */}
+            <div className="absolute inset-0 bg-white" />
+            <div className="absolute inset-0 backdrop-blur-xl bg-white/95 border-l border-slate-200" />
             
             <div className="relative h-full flex flex-col">
-              {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/10">
-                <span className="text-xl font-bold bg-gradient-to-r from-white to-pink-200 bg-clip-text text-transparent">
-                  Menu
+              {/* Professional header */}
+              <div className="flex items-center justify-between p-6 border-b border-slate-200">
+                <span className="text-lg font-semibold tracking-wide text-slate-800">
+                  Navigation
                 </span>
                 <button
                   onClick={toggleMenu}
-                  className="p-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors duration-200"
+                  className="p-2 rounded-lg transition-colors duration-300 bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-800"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-4 w-4" />
                 </button>
               </div>
               
               {/* Navigation Items */}
-              <div className="flex-1 overflow-y-auto py-6">
+              <div className="flex-1 overflow-y-auto py-4">
                 {navigationItems.map((item, index) => {
                   const Icon = item.icon;
                   const isActive = activeHash === item.href;
@@ -171,41 +165,40 @@ const Navbar = () => {
                   return (
                     <div 
                       key={item.title}
-                      className="px-6 mb-2"
+                      className="px-4 mb-1"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
                       <button
                         onClick={() => handleNavClick(item.href)}
-                        className={`w-full flex items-center space-x-4 p-4 rounded-xl transition-all duration-300 group ${
+                        className={`w-full flex items-center space-x-4 p-4 rounded-lg transition-all duration-300 group ${
                           isActive
-                            ? 'bg-white/20 backdrop-blur-sm border border-white/30 text-white'
-                            : 'text-white/80 hover:text-white hover:bg-white/10'
+                            ? 'bg-slate-100 text-slate-800 border border-slate-200'
+                            : 'text-slate-600 hover:text-slate-800 hover:bg-slate-50'
                         }`}
                       >
-                        <div className={`p-2 rounded-lg transition-all duration-300 ${
+                        <div className={`p-2 rounded-md transition-all duration-300 ${
                           isActive 
-                            ? 'bg-pink-500/20 text-pink-400' 
-                            : 'bg-white/10 text-white/60 group-hover:bg-pink-500/20 group-hover:text-pink-400'
+                            ? 'bg-slate-200 text-slate-700'
+                            : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200 group-hover:text-slate-700'
                         }`}>
-                          <Icon className="h-5 w-5" />
+                          <Icon className="h-4 w-4" />
                         </div>
-                        <span className="font-medium">{item.title}</span>
+                        <span className="font-medium text-sm tracking-wide">{item.title}</span>
                       </button>
                     </div>
                   );
                 })}
               </div>
               
-              {/* CTA Button */}
-              <div className="p-6 border-t border-white/10">
+              {/* Professional CTA Button */}
+              <div className="p-6 border-t border-slate-200">
                 <div className="relative group">
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 blur-md opacity-75" />
                   <button
                     onClick={() => handleNavClick('#login')}
-                    className="relative w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 rounded-xl font-semibold shadow-xl border border-white/20 transition-all duration-300 transform hover:scale-105"
+                    className="relative w-full py-3.5 rounded-lg font-medium shadow-sm transition-all duration-300 transform hover:scale-[1.02] bg-slate-800 hover:bg-slate-900 text-white border border-slate-700"
                   >
                     <span className="flex items-center justify-center space-x-2">
-                      <Sparkles className="h-5 w-5" />
+                      <Sparkles className="h-4 w-4" />
                       <span>Get Started</span>
                     </span>
                   </button>
